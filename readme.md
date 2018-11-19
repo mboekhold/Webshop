@@ -2,7 +2,7 @@
 
 ## Description of the project:
 
-
+...
 
 <h2> Description of <i> web3_project </i> folder: </h2>
 
