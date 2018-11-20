@@ -6,6 +6,5 @@ from .models import Part
 
 def part_list(request):
     parts = Part.objects.all()
-    output = ', '.join([str(parts) for part in parts])
-    return HttpResponse(output)
+    return render(request,'parts/part_list.html', {'parts': parts})
 
