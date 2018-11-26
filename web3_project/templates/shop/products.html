@@ -1,11 +1,17 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block top_background_wrapper %}
+<div class="bgded overlay" style="background-image:url({% static '/images/demo/backgrounds/01.png' %});">
+{% endblock %}
+
+{% block content %}
 <div class="wrapper row2">
   <div id="breadcrumb" class="hoc clear"> 
     
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Lorem</a></li>
-      <li><a href="#">Ipsum</a></li>
-      <li><a href="#">Dolor</a></li>
+      <li><a href="../">Home</a></li>
+      <li><a href="#">Products</a></li>
     </ul>
   
   </div>
@@ -18,22 +24,22 @@
     
       <div id="gallery">
         <figure>
-          <header class="heading">Gallery Title Goes Here</header>
+          <header class="heading">Products</header>
           <ul class="nospace clear">
-            <li class="one_quarter first"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter first"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter first"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-            <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
+            <li class="one_quarter first"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter first"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter first"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
+            <li class="one_quarter"><a href="#"><img src="{% static "/images/demo/gallery/01.png" %}" alt=""></a></li> 
           </ul>
-          <figcaption>Gallery Description Goes Here</figcaption>
+          
         </figure>
       </div>
      
@@ -60,3 +66,4 @@
     <div class="clear"></div>
   </main>
 </div>
+{% endblock %}
