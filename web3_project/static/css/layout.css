@@ -189,6 +189,40 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 .sidebar nav ul ul a::after{left:25px;}
 .sidebar nav ul ul ul a{padding-left:55px;}
 .sidebar nav ul ul ul a::after{left:45px;}
+/* Side bar categories */
+#category-sidebar {
+    width:220px;
+    padding:30px 20px 0 0;
+	float: left;
+	margin: -25px 75px 0px 0px;
+
+	
+}
+
+#category-sidebar ul{
+    margin:0;
+    padding:0;
+}
+
+#category-sidebar ul li {
+    margin:0;
+    list-style:none;
+	padding:10px 14px;
+}
+
+#category-sidebar ul li a {
+    display:block;
+}
+
+#category-sidebar ul li.selected {
+    background-color: rgba(0,0,0,.65);
+    border-radius:4px;
+}
+
+#category-sidebarul li.selected a {
+    background-color: rgba(0,0,0,.65);
+}
+
 
 /* Pagination */
 .pagination{display:block; width:100%; text-align:center; clear:both;}
@@ -256,6 +290,36 @@ blockquote::before{color:rgba(0,0,0,.05);}
 #topbar ul li{border-color:rgba(255,255,255,.2);}
 #topbar > div:last-of-type li:first-child a{color:#F4BF4F;}
 
+/* Side Bar */
+#sidebar {
+    width:220px;
+    padding:30px 20px 0 0;
+    float:left;
+}
+
+#sidebar ul{
+    margin:0;
+    padding:0;
+}
+
+#sidebar ul li {
+    margin:0;
+    list-style:none;
+    padding:10px 14px;
+}
+
+#sidebar ul li a {
+    display:block;
+}
+
+#sidebar ul li.selected {
+    background:#5993bb;
+    border-radius:4px;
+}
+
+#sidebar ul li.selected a {
+    color:#fff;
+}
 
 /* Header */
 .wrapper.row1::before{background:transparent; border-color:transparent; border-bottom-color:#FFFFFF;}
@@ -276,6 +340,7 @@ blockquote::before{color:rgba(0,0,0,.05);}
 .wrapper.row4::before{background:transparent; border-color:transparent; border-top-color:#FFFFFF;}
 #footer .title{color:#FFFFFF;}
 #footer .linklist li{border-color:#1D1E1F;}
+
 
 
 /* Navigation */
