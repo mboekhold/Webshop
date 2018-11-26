@@ -1,7 +1,142 @@
 {% extends "shop/base.html" %}
+{% load static %}
 
-{#{% block content %}#}
-{#{% endblock %}#}
+{% block top_background_wrapper %}
+<div class="bgded overlay" style="background-image:url({% static '/images/demo/backgrounds/01.png' %});">
+{% endblock %}
+
+
+{% block content %}
+    <div id="pageintro" class="hoc clear">
+        <article>
+            <h2 class="heading">Quisque aliquam erat efficitur laoreet</h2>
+            <p>Nam sed vehicula  aenean dictum nec erat vel finibus.</p>
+            <footer><a class="btn" href="#">Neque elit interdum</a></footer>
+        </article>
+        
+    </div>
+
+
+    <div class="wrapper row3">
+    <main class="hoc container clear">
+        
+        <article class="group btmspace-80">
+        <div class="one_half first"><img class="inspace-10 borderedbox" src="{% static 'images/demo/480x400.png' %}" alt=""></div>
+        <div class="one_half">
+            <p class="nospace font-xs">Suscipit viverra luctus sit</p>
+            <h3 class="heading">Amet diam nunc venenatis lacus</h3>
+            <p>Accumsan vestibulum nulla imperdiet dolor ut tempus ultricies nam sed posuere mi id molestie tortor quisque suscipit convallis ex in interdum tortor vestibulum ac phasellus.</p>
+            <blockquote>Viverra id felis a lacinia sed metus orci gravida non neque ut elementum facilisis est cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus quisque mollis nulla in quam</blockquote>
+            <p>Porttitor lacinia pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+        </div>
+        </article>
+      
+        <hr class="btmspace-80">
+        
+        <div class="center btmspace-80">
+        <h3 class="heading">Curabitur ac metus consequat</h3>
+        <p class="nospace">Rhoncus donec faucibus sit amet est ac porttitor integer aliquet dolor eros ac pretium odio.</p>
+        </div>
+        <ul class="nospace group cta">
+        <li class="one_third first">
+            <article><a href="#"><i class="fa fa-gamepad"></i></a>
+            <h6 class="heading">Nam at magna est</h6>
+            <p>Sed sodales mauris et egestas auctor neque ligula rhoncus enim id bibendum arcu massa phasellus&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+            </article>
+        </li>
+        <li class="one_third">
+            <article><a href="#"><i class="fa fa-location-arrow"></i></a>
+            <h6 class="heading">Urna lectus praesent</h6>
+            <p>Pulvinar faucibus quam nec lacinia ut tincidunt nisi in euismod consequat donec ut ante tincidunt&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+            </article>
+        </li>
+        <li class="one_third">
+            <article><a href="#"><i class="fa fa-subway"></i></a>
+            <h6 class="heading">Tempor lorem aliquet</h6>
+            <p>Leo cras tempus odio in suscipit tempus dolor dolor consequat diam sit amet ullamcorper est enim eu&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+            </article>
+        </li>
+        </ul>
+       
+        <div class="clear"></div>
+    </main>
+    </div>
+
+
+<div class="wrapper bgded overlay" style="background-image:url({% static 'images/demo/backgrounds/02.png' %});">
+  <article class="hoc container clear">
+  
+    <div class="three_quarter first">
+      <h6 class="nospace">Metus augue porttitor sed</h6>
+      <p class="nospace">Lectus vitae rutrum auctor lectus pellentesque id pulvinar velit at porta leo</p>
+    </div>
+    <footer class="one_quarter"><a class="btn medium" href="#">More Information &raquo;</a></footer>
+   
+  </article>
+</div>
+
+<div class="wrapper row3">
+  <section class="hoc container clear">
+    
+    <div class="center btmspace-50">
+      <h3 class="font-x2 nospace">Turpis id ex pharetra</h3>
+      <p class="nospace">Imperdiet morbi elementum elit vel diam tincidunt finibus ac et est nullam vulputate</p>
+    </div>
+    <ul class="nospace group latest">
+      <li class="one_third first">
+        <article>
+          <figure><a href="#"><img src="{% static 'images/demo/320x220.png' %}" alt=""></a>
+            <figcaption class="group">
+              <time datetime="2045-04-06">6<sup>th</sup> April 2045</time>
+              <span>by <a href="#">Admin</a></span> </figcaption>
+          </figure>
+          <div class="postexcerpt">
+            <h4 class="heading">Vestibulum ut ac mattis</h4>
+            <p>Quisque consectetur nibh pharetra vitae id mattis eu tellus aliquam malesuada tempus pulvinar&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+          </div>
+        </article>
+      </li>
+      <li class="one_third">
+        <article>
+          <figure><a href="#"><img src="{% static 'images/demo/320x220.png' %}" alt=""></a>
+            <figcaption class="group">
+              <time datetime="2045-04-05">5<sup>th</sup> April 2045</time>
+              <span>by <a href="#">Admin</a></span> </figcaption>
+          </figure>
+          <div class="postexcerpt">
+            <h4 class="heading">Risus nulla varius sit</h4>
+            <p>Eget tincidunt neque in hac habitasse platea dictumst phasellus sollicitudin porta congue ut gravida&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+          </div>
+        </article>
+      </li>
+      <li class="one_third">
+        <article>
+          <figure><a href="#"><img src="{% static 'images/demo/320x220.png' %}" alt=""></a>
+            <figcaption class="group">
+              <time datetime="2045-04-04">4<sup>th</sup> April 2045</time>
+              <span>by <a href="#">Admin</a></span> </figcaption>
+          </figure>
+          <div class="postexcerpt">
+            <h4 class="heading">Amet est at elementum</h4>
+            <p>Dapibus duis eu arcu gravida gravida tellus sit amet rhoncus libero mauris ac dolor mattis tincidunt&hellip;</p>
+            <footer><a href="#">Read More &raquo;</a></footer>
+          </div>
+        </article>
+      </li>
+    </ul>
+   
+  </section>
+</div>
+
+
+{% endblock %}
+
 
 
 
