@@ -6,17 +6,64 @@
 {% endblock %}
 
 {% block content %}
-    <div class="product-detail">
-        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-        <h1>{{ product.name }}</h1>
-        <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
-        <p class="price">${{ product.price }}</p>
-        <form action="{% url "cart:cart_add" product.id %}" method="post">
-            {{ cart_product_form }}
-            {% csrf_token %}
-            <input type="submit" value="Add to cart">
-        </form>
-        {{ product.description|linebreaks }}
+    <div class="wrapper row2">
+        <div id="breadcrumb" class="hoc clear">
+
+            <ul>
+                <li><a href="{% url 'shop:home' %}">Home</a></li>
+                <li><a href="{% url 'shop:product_list' %}">Products</a></li>
+                <li><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></li>
+            </ul>
+
+        </div>
+    </div>
+    {#    <div class="product-detail">#}
+    {#        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">#}
+    {#        <h1>{{ product.name }}</h1>#}
+    {#        <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>#}
+    {#        <p class="price">${{ product.price }}</p>#}
+    {#        <form action="{% url "cart:cart_add" product.id %}" method="post">#}
+    {#            {{ cart_product_form }}#}
+    {#            {% csrf_token %}#}
+    {#            <input type="submit" value="Add to cart">#}
+    {#        </form>#}
+    {#        {{ product.description|linebreaks }}#}
+    {#    </div>#}
+    <div class="wrapper row3">
+        <main class="hoc container clear">
+            <article class="group btmspace-80">
+                <div class="one_half first">
+                    <img class="inspace-10 borderedbox" src="
+                    {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"
+                         alt="">
+                </div>
+                <div class="one_half">
+                    <p class="nospace font-xs">
+                        {% if product.available %}Available({{ product.stock }}){% else %}Not In Stock{% endif %}
+
+{#                        <a href="{{ product.category.get_absolute_url }}">#}
+{#                            {{ product.category }}#}
+{#                        </a>#}
+                    </p>
+                    <h3 class="heading">{{ product.name }}</h3>
+                    <p>{{ product.descript }}</p>
+                    <blockquote>Viverra id felis a lacinia sed metus orci gravida non neque ut elementum facilisis est
+                        cum
+                        sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus quisque mollis
+                        nulla
+                        in quam
+                    </blockquote>
+                    <p>${{ product.price }}</p>
+                    <footer><a href="#">Read More &raquo;</a></footer>
+                </div>
+            </article>
+            <hr class="btmspace-80">
+            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input type="submit" value="Add to cart">
+            </form>
+        </main>
     </div>
 {% endblock %}
 

@@ -55,13 +55,13 @@ Licence URI: http://www.os-templates.com/template-terms
     <header id="header" class="hoc clear">
      
       <div id="logo" class="fl_left">
-        <h1><a href="index.html">Shop</a></h1>
+        <h1><a href="{% url 'shop:home' %}">Shop</a></h1>
       </div>
  
       <nav id="mainav" class="fl_right">
         <ul class="clear">
-          <li class="active"><a href="">Home</a></li>
-          <li><a class="active" href="products">Products</a> </li>
+          <li {% comment %}class="active"{% endcomment %}><a href="{% url 'shop:home' %}">Home</a></li>
+          <li><a class="active" href="{% url 'shop:product_list' %}">Products</a> </li>
           <li><a class="drop" href="#">User</a>
             <ul>
               <li><a href="#">Level 2</a></li>
@@ -81,7 +81,14 @@ Licence URI: http://www.os-templates.com/template-terms
       </nav>
     </header>
 <!--END HEADER-->
-
+{# <div id="pageintro" class="hoc clear">#}
+{#        <article>#}
+{#            <h2 class="heading">Quisque aliquam erat efficitur laoreet</h2>#}
+{#            <p>Nam sed vehicula  aenean dictum nec erat vel finibus.</p>#}
+{#            <footer><a class="btn" href="#">Neque elit interdum</a></footer>#}
+{#        </article>#}
+{##}
+{#    </div>#}
 {% block content %}  
 {% endblock %}
    
