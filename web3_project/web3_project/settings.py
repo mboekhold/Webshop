@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'parts',
+    'accounts',
     'shop',
     'orders',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,5 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/products')
 CART_SESSION_ID = 'cart'
+
+LOGIN_REDIRECT_URL = "shop:home"
