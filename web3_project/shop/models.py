@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 # Create your models here.
+
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
@@ -9,10 +12,10 @@ class Category(models.Model):
     
     def __str__(self):
             return self.name
-        
+
     def get_absolute_url(self):
             return reverse('shop:product_list_by_category', args=[self.slug])
-    
+
     class Meta:
         ordering = ['name']
         verbose_name = 'category'
@@ -30,6 +33,7 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    userCart = models.ManyToManyField(get_user_model())
 
    
 
@@ -43,4 +47,5 @@ class Product(models.Model):
             ordering = ('-created')
             index_together = (('id', 'slug'),)
         
+
 

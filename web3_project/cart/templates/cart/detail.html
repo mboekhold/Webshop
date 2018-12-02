@@ -1,0 +1,139 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block style_page %}
+            <link href="{% static "/css/cart.css" %}" rel="stylesheet">
+{% endblock style_page %}
+{% block title %}
+    Your shopping cart
+{% endblock %}
+
+{% block content %}
+{#    <h1>Your shopping cart</h1>#}
+{#    <table class="cart">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>Image</th>#}
+{#            <th>Product</th>#}
+{#            <th>Quantity</th>#}
+{#            <th>Remove</th>#}
+{#            <th>Unit price</th>#}
+{#            <th>Price</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for item in cart %}#}
+{#            {% with product=item.product %}#}
+{#                <tr>#}
+{#                    <td>#}
+{#                        <a href="{{ product.get_absolute_url }}">#}
+{#                            <img src="#}
+{##}
+{#                                {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">#}
+{#                        </a>#}
+{#                    </td>#}
+{#                    <td>{{ product.name }}</td>#}
+{#                    <td>#}
+{#                        <form action="{% url "cart:cart_add" product.id %}" method="post">#}
+{#                            {{ item.update_quantity_form.quantity }}#}
+{#                            {{ item.update_quantity_form.update }}#}
+{#                            <input type="submit" value="Update">#}
+{#                            {% csrf_token %}#}
+{#                        </form>#}
+{#                    </td>#}
+{#                    <td><a href="{% url "cart:cart_remove" product.id %}">Remove</a></td>#}
+{#                    <td class="num">${{ item.price }}</td>#}
+{#                    <td class="num">${{ item.total_price }}</td>#}
+{#                </tr>#}
+{#            {% endwith %}#}
+{#        {% endfor %}#}
+{#        <tr class="total">#}
+{#            <td>Total</td>#}
+{#            <td colspan="4"></td>#}
+{#            <td class="num">${{ cart.get_total_price }}</td>#}
+{#        </tr>#}
+{#        </tbody>#}
+{#    </table>#}
+{#    <p class="text-right">#}
+{#        <a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>#}
+{#        <a href="{% url "orders:order_create" %}" class="button">Checkout</a>#}
+{#    </p>#}
+
+
+
+    <div class="wrap cf">
+{#        <h1 class="projTitle">Responsive Table<span>-Less</span> Shopping Cart</h1>#}
+        <div class="heading cf">
+            <h1>My Cart</h1>
+            <a href="#" class="continue">Continue Shopping</a>
+        </div>
+        <div class="cart">
+            <!--    <ul class="tableHead">
+                  <li class="prodHeader">Product</li>
+                  <li>Quantity</li>
+                  <li>Total</li>
+                   <li>Remove</li>
+                </ul>-->
+            <ul class="cartWrap">
+                {% for item in cart %}
+                    {% with product=item.product %}
+                        <li class="items even" style="color:black;">
+
+                            <div class="infoWrap">
+                                <div class="cartSection">
+                                    <img style="height: 100px; width: 114px"
+                                        src="
+
+                                            {% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"
+                                        alt=""
+                                        class="itemImg"/>
+                                    <p class="itemNumber">#{{ product.id }}</p>
+                                    <h3 style="color: black">{{ product.name }}</h3>
+
+                                    {#                                    <p><input type="text" class="qty" placeholder=""/> x ${{ product.price }}</p>#}
+                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                        {{ item.update_quantity_form.quantity}}  x ${{ product.price }}
+                                        {{ item.update_quantity_form.update}}
+                                        <input type="submit" value="Update">
+                                        {% csrf_token %}
+                                    </form>
+                                    <p class="stockStatus">
+                                        {% if product.available %}In Stock({{ product.stock }})
+                                        {% else %}Not In Stock{% endif %}
+                                    </p>
+                                </div>
+
+
+                                <div class="prodTotal cartSection">
+                                    <p>${{ item.total_price }}</p>
+                                </div>
+                                <div class="cartSection removeWrap">
+                                    <a href="{% url "cart:cart_remove" product.id %}" class="remove">x</a>
+                                </div>
+                            </div>
+                        </li>
+                        <hr/>
+                    {% endwith %}
+                {% endfor %}
+
+                <!--<li class="items even">Item 2</li>-->
+
+            </ul>
+        </div>
+
+        <div class="promoCode"><label for="promo">Have A Promo Code?</label><input type="text" name="promo"
+                                                                                   placholder="Enter Code"/>
+            <a href="#" class="btn"></a></div>
+
+        <div class="subtotal cf">
+            <ul>
+                <li class="totalRow"><span class="label">Subtotal</span><span class="value">${{ cart.get_total_price }}</span></li>
+
+                <li class="totalRow"><span class="label">Shipping</span><span class="value">$5.00</span></li>
+
+                <li class="totalRow"><span class="label">Tax</span><span class="value">$4.00</span></li>
+                <li class="totalRow final"><span class="label">Total</span><span class="value">${{ cart.get_total_price|add:10.00 }}</span></li>
+                <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
