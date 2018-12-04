@@ -60,7 +60,7 @@ Installing package via pip:
 
 ...
 
-<h2> Description of <i> web3_project </i> folder: </h2>
+<h2> Description of <i> web3_project </i> folder and manage.py: </h2>
 
 
 <h2> <b>manage.py</b>:</h2>
@@ -83,7 +83,7 @@ An entry-point for WSGI-compatible web servers to serve the project.
 <p> To run the site, you need to start up the server. File <b>manage.py</b> already has a command that can allow you to do it</p>
 First open cmd (analog on other OS) in the folder <b>web3_project</b> and write this code: 
 
-<i>python manage.py runserver</i> 
+<b><i>python manage.py runserver</i></b> 
 
 Prerequisite is to have python installed globally
 <p>Site can be found on this url: </p>
