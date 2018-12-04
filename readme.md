@@ -54,7 +54,7 @@ Installing package via pip:
     1. Open console<br/>
     2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)<br/>
     3. Write that command:<br/>
-        pip install -r package.txt
+        <b><i>pip install -r package.txt</i></b>
         
 <h2> Description of <i> web3_project </i> folder: </h2>
 
