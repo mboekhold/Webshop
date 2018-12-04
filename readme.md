@@ -22,34 +22,27 @@ Command:
 
 <h3>For Windows OS : </h3>
 
-Installing python:
+Installing python:<br/>
+     1. Follow instructions on page this <a href="https://realpython.com/installing-python/">page</a><br/>
+     2. Important! Make sure python is added to path variable. Also, python needs to be version 3.6.* or higher.<br/>
 
-    1. Follow instructions on page this <a href="https://realpython.com/installing-python/">page</a>
+Installing pip:<br/>
+    1. pip should be going with python package, if its version is 2.7.* or 3.6.*.
+     You can check if you have pip by writting<br/>
+    2. In case it is not you can find installation instruction on this
+     <a href="https://pip.pypa.io/en/stable/installing/">page</a><br/>
 
-    2. Important! Make sure python is added to path variable.
-
-Installing pip:
-
-    1. pip should be going with python package, if its version is 2.7.* or 3.6.*. You can check if you have pip by writting
-
-    2. In case it is not you can find installation instruction on this <a href="https://pip.pypa.io/en/stable/installing/">page</a>
-
-Installing package via pip:
-
-    1. Open console(Press "Windows+R", write cmd and press "Enter"  || Press "Windows", write cmd and choose cmd in search results).
-
-    2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)
-
-    3. Write that command:
+Installing package via pip:<br/>
+    1. Open console(Press "Windows+R", write cmd and press "Enter"  || Press "Windows", write cmd and choose cmd in search results).<br/>
+    2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)<br/>
+    3. Write that command:<br/>
         pip install -r package.txt
 
 <h3>For MAC/Linux OS : </h3>
 
-Installing python:
-
-    1. Follow instructions on page this <a href="https://realpython.com/installing-python/">page</a>
-
-    2. Important! Make sure python is added to path variable. Also, python needs to be version 3.6.* or higher.
+Installing python:<br/>
+     1. Follow instructions on page this <a href="https://realpython.com/installing-python/">page</a><br/>
+     2. Important! Make sure python is added to path variable. Also, python needs to be version 3.6.* or higher.<br/>
 
 Installing pip:<br/>
     1. pip should be going with python package, if its version is 2.7.* or 3.6.*.
@@ -58,12 +51,9 @@ Installing pip:<br/>
      <a href="https://pip.pypa.io/en/stable/installing/">page</a><br/>
 
 Installing package via pip:
-
-    1. Open console
-
-    2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)
-    
-    3. Write that command:
+    1. Open console<br/>
+    2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)<br/>
+    3. Write that command:<br/>
         pip install -r package.txt
         
 <h2> Description of <i> web3_project </i> folder: </h2>
