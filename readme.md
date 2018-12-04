@@ -56,9 +56,6 @@ Installing package via pip:
     3. Write that command:<br/>
         <b><i>pip install -r package.txt</i></b>
         
-<h2> Description of <i> web3_project </i> folder: </h2>
-
-...
 
 <h2> Description of <i> web3_project </i> folder and manage.py: </h2>
 
