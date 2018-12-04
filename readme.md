@@ -54,7 +54,6 @@ Installing python:
 Installing pip:
     1. pip should be going with python package, if its version is 2.7.* or 3.6.*.
      You can check if you have pip by writting
-
     2. In case it is not you can find installation instruction on this
      <a href="https://pip.pypa.io/en/stable/installing/">page</a>
 
