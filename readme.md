@@ -14,6 +14,7 @@ Done by:
 <h3> Clonning the project</h3>
 
 You need git for that, so make sure to install it if you did not.
+
 You can install it following instructions on official git <a href="https://git-scm.com/downloads">page</a>
 
 Command:
@@ -22,16 +23,23 @@ Command:
 <h3>For Windows OS : </h3>
 
 Installing python:
+
     1. Follow instructions on page this <a href="https://realpython.com/installing-python/">page</a>
+
     2. Important! Make sure python is added to path variable.
 
 Installing pip:
+
     1. pip should be going with python package, if its version is 2.7.* or 3.6.*. You can check if you have pip by writting
+
     2. In case it is not you can find installation instruction on this <a href="https://pip.pypa.io/en/stable/installing/">page</a>
 
 Installing package via pip:
+
     1. Open console(Press "Windows+R", write cmd and press "Enter"  || Press "Windows", write cmd and choose cmd in search results).
+
     2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)
+
     3. Write that command:
         pip install -r package.txt
 
@@ -40,16 +48,22 @@ Installing package via pip:
 <h3>For MAC/Linux OS : </h3>
 
 Installing python:
+
     1. Follow instructions on page this <a href="https://realpython.com/installing-python/">page</a>
+
     2. Important! Make sure python is added to path variable. Also, python needs to be version 3.6.* or higher.
 
 Installing pip:
     1. pip should be going with python package, if its version is 2.7.* or 3.6.*. You can check if you have pip by writting
+
     2. In case it is not you can find installation instruction on this <a href="https://pip.pypa.io/en/stable/installing/">page</a>
 
 Installing package via pip:
+
     1. Open console
+
     2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)
+    
     3. Write that command:
         pip install -r package.txt
         
