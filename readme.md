@@ -36,7 +36,7 @@ Installing package via pip:<br/>
     1. Open console(Press "Windows+R", write cmd and press "Enter"  || Press "Windows", write cmd and choose cmd in search results).<br/>
     2. Go to cloned directory(.../directory_to_which_you_cloned/web3/)<br/>
     3. Write that command:<br/>
-        pip install -r package.txt
+        <b><i>pip install -r package.txt</i></b>
 
 <h3>For MAC/Linux OS : </h3>
 
