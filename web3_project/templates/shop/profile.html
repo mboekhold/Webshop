@@ -1,0 +1,50 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block style_page %}
+{% endblock style_page %}
+{% block top_background_wrapper %}
+    <div class="bgded overlay" style="background-image:url({% static '/images/demo/backgrounds/01.png' %});">
+{% endblock %}
+
+{% block content %}
+
+      <div class="wrapper row3">
+        <main class="hoc container clear">
+            <article class="group btmspace-80">
+                <div class="one_half first">
+                    <img class="inspace-10 borderedbox" src="
+                    {% if profile.image %}{{ profile.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"
+                         alt="">
+                </div>
+                <div class="one_half">
+                    <p class="nospace font-xs"><b>Username:</b>
+                    {{ profile.user.username }}
+
+                        <a href="{{ product.category.get_absolute_url }}">
+                            {{ product.category }}
+                        </a>
+                    </p>
+                    <h3 class="heading"><b>First Name:</b>{{ profile.first_name }}<br/><b>Last Name:</b> {{ profile.last_name }}</h3>
+                    <p>{{ profile.description }}</p>
+                    <blockquote>{{ profile.quote }}
+                    </blockquote>
+                    <p>{{ profile.user.email }}</p>
+                    <footer><a href="{% url 'change_profile' %}">Edit &raquo;</a></footer>
+                </div>
+            </article>
+            <hr class="btmspace-80">
+            <form action="#" method="post">
+                {{ cart_product_form | crispy}}
+                {% csrf_token %}
+                <input type="submit" value="Add to cart">
+            </form>
+        </main>
+    </div>
+
+{% endblock %}
+
+{% block script_page %}
+{% endblock script_page %}

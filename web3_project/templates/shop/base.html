@@ -29,8 +29,15 @@ Licence URI: http://www.os-templates.com/template-terms
     <div id="topbar" class="hoc clear">
         <div class="fl_left">
             <ul class="nospace">
-                <li><i class="fa fa-phone"></i>+ 31 6 57900979</li>
-                <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+                {% if user.is_authenticated %}
+                    <li>{{ user.username }}</li>
+                    <li><i class="fa fa-envelope-o"></i> {{ user.email }}</li>
+                {% else %}
+                    <li>Not logged in!</li>
+                    {#                    <i class="fa fa-phone"></i>#}
+                    <li></li>
+                {% endif %}
+
             </ul>
         </div>
         <div class="fl_right">
@@ -39,6 +46,9 @@ Licence URI: http://www.os-templates.com/template-terms
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact Us</a></li>
                 {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <li><a href="admin">Admin</a></li>
+                    {% endif %}
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
@@ -68,19 +78,21 @@ Licence URI: http://www.os-templates.com/template-terms
             <ul class="clear">
                 <li {% comment %}class="active"{% endcomment %}><a href="{% url 'shop:home' %}">Home</a></li>
                 <li><a class="active" href="{% url 'shop:product_list' %}">Products</a></li>
-                <li><a class="drop" href="#">User</a>
-                    <ul>
-                        <li><a href="#">Level 2</a></li>
-                        <li><a class="drop" href="#">Level 2 + Drop</a>
-                            <ul>
-                                <li><a href="#">Level 3</a></li>
-                                <li><a href="#">Level 3</a></li>
-                                <li><a href="#">Level 3</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
-                    </ul>
-                </li>
+                {% if user.is_authenticated %}
+                    <li><a class="drop" href="{% url 'shop:profile' %}">User</a>
+                        <ul>
+                            <li><a href="#">Level 2</a></li>
+                            <li><a class="drop" href="#">Level 2 + Drop</a>
+                                <ul>
+                                    <li><a href="#">Level 3</a></li>
+                                    <li><a href="#">Level 3</a></li>
+                                    <li><a href="#">Level 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
                 <li><a href="{% url 'cart:cart_detail' %}">Cart</a></li>
 
             </ul>
@@ -96,7 +108,13 @@ Licence URI: http://www.os-templates.com/template-terms
     {#            </article>#}
     {##}
     {#        </div>#}
-
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     {% block content %}
     {% endblock %}
 
@@ -183,5 +201,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
+    {% block script_page %}
+    {% endblock script_page %}
 </body>
 </html>

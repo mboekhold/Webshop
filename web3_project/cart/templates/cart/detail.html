@@ -132,7 +132,7 @@
 
                 <li class="totalRow"><span class="label">Tax</span><span class="value">$4.00</span></li>
                 <li class="totalRow final"><span class="label">Total</span><span class="value">${{ cart.get_total_price|add:10.00 }}</span></li>
-                <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+                <li class="totalRow"><a href="{% url "orders:order_create" %}" class="btn continue">Checkout</a></li>
             </ul>
         </div>
     </div>

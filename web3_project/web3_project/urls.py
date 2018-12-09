@@ -18,15 +18,10 @@ from django.urls import include, path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth import views as auth_views
-from accounts import views as account_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('signup/', account_views.SignUp, name='signup'),
-    path('accounts/', include("django.contrib.auth.urls")),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='accounts/logout.html'), name='logout'),
+    path('account/', include('accounts.urls')),
     path('', include(('shop.urls', 'shop'), namespace='shop')),
     path(r'^cart/', include(('cart.urls', 'cart'), namespace='cart')),
     # path('cart/', include('cart.urls')),
