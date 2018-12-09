@@ -136,3 +136,5 @@ CART_SESSION_ID = 'cart'
 LOGIN_REDIRECT_URL = "shop:home"
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_URL = 'login'

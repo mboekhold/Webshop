@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from cart.forms import CartAddProductForm
+from django.contrib.auth.decorators import login_required
 from accounts.models import Profile
 from django.contrib.auth import get_user_model
 
@@ -37,7 +38,7 @@ def home(request):
 def cart(request):
     return render(request, 'shop/cart.html')
 
-
+@login_required
 def profile(request):
     user = request.user
     return render(request, 'shop/profile.html', {'profile': user.profile})

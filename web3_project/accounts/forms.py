@@ -9,10 +9,6 @@ class UserCreateForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
         model = User
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["username"].label = "Display name"
-        self.fields["email"].label = "Email address"
 
 
 class ProfileChangeForm(forms.ModelForm):
