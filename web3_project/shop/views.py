@@ -28,7 +28,8 @@ def product_detail(request, id, slug):
     else:
         cart_product_form = CartAddProductForm()
 
-    return render(request, 'shop/detail.html', {'product': product, 'cart_product_form': cart_product_form})
+    return render(request, 'shop/detail.html',
+                  {'product': product, 'cart_product_form': cart_product_form})
 
 
 def home(request):
