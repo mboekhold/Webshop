@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib import messages
 from django.conf import settings
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.contrib.sites.shortcuts import get_current_site
 from django.core import signing
 from django.template.loader import render_to_string
@@ -13,9 +14,8 @@ from django_registration import signals
 from django_registration.exceptions import ActivationError
 from django_registration.views import ActivationView as BaseActivationView
 from django_registration.views import RegistrationView as BaseRegistrationView
-
 from . import forms
-
+import sys
 
 import logging
 
@@ -167,13 +167,14 @@ class SignUp(generic.CreateView):
 
 
 def changeProfile(request):
+    from PIL import Image
+    import io
     user = request.user
     if request.method == 'POST':
 
         user_form = forms.UserChangeForm(request.POST, instance=user)
-        profile_form = forms.ProfileChangeForm(request.POST, instance=user.profile)
+        profile_form = forms.ProfileChangeForm(request.POST, request.FILES, instance=user.profile)
 
-        logger.error(profile_form)
         if all((profile_form.is_valid(), user_form.is_valid())):
             user_form.save()
             profile_form.save()
@@ -183,5 +184,4 @@ def changeProfile(request):
     else:
         user_form = forms.UserChangeForm(instance=user)
         profile_form = forms.ProfileChangeForm(instance=user.profile)
-        logger.error(profile_form)
     return render(request, 'accounts/change.html', {'profile_form': profile_form, 'user_form': user_form})

@@ -1,6 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth import get_user_model
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
 # Create your models here.
 
 
@@ -47,4 +51,21 @@ class Product(models.Model):
             index_together = (('id', 'slug'),)
         
 
+    def save(self):
+        # Opening the uploaded image
+        im = Image.open(self.image)
 
+        output = BytesIO()
+
+        # Resize/modify the image
+        im = im.resize((450, 265))
+
+        # after modifications, save it to the output
+        im.save(output, format='JPEG', quality=100)
+        output.seek(0)
+
+        # change the imagefield value to be the newley modifed image value
+        self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
+                                        sys.getsizeof(output), None)
+
+        super(Product, self).save()
