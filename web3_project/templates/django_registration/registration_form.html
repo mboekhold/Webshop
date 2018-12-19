@@ -1,0 +1,28 @@
+{% extends "shop/base.html" %}
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+{% block title_tag %}Sign Up | {{block.super}}  {% endblock %}
+
+{% block content%}
+<div class="container">
+
+    <h1>Sign Up</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"> Create an Account</legend>
+            {{ form| crispy}}
+        </fieldset>
+    <input type="submit" value="Sign Up" class="btn btn-default">
+
+
+    </form>
+<div class="border-top pt-3 mt-5">
+    <small class="text-muted">
+        Already Have An Account? <a href="{% url 'login' %}" class="ml-2"> Login </a>
+    </small>
+</div>
+
+</div>
+
+{% endblock %}

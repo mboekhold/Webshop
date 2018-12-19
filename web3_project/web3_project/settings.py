@@ -138,3 +138,11 @@ LOGIN_REDIRECT_URL = "shop:home"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_URL = 'login'
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
