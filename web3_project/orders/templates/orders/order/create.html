@@ -6,9 +6,10 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Checkout</h1>
+    
     
     <div class="order-info">
+        
         <h3>Your order</h3>
         <ul>
             {% for item in cart %}
@@ -18,9 +19,10 @@
         <p>Total: ${{ cart.get_total_price }}</p>
     </div>
     
-    <form action="." method="post" class="order-form"  >
+    <form method="POST" class="order-form"  >
+    {% csrf_token %}
         {{ form| crispy}}
-        <p><input type="submit" value="Place order"></p>
-        {% csrf_token %}
+        <p><input class="btn btn-default" type="submit" value="order_create"></p>
+        
     </form>
 {% endblock %}
