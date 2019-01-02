@@ -18,6 +18,9 @@ from django.urls import include, path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from api.resources import ProductResource
+from django.conf.urls import url,include
+product_resource = ProductResource()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,7 +29,7 @@ urlpatterns = [
     path(r'^cart/', include(('cart.urls', 'cart'), namespace='cart')),
     # path('cart/', include('cart.urls')),
     path(r'^orders/', include(('orders.urls', 'orders'), namespace='orders')),
-
+    path('api/',include(product_resource.urls)),
 ]
 
 if settings.DEBUG:
