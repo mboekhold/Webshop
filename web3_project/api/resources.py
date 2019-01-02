@@ -1,8 +1,12 @@
 from tastypie.resources import ModelResource
-from shop.models import Product
+from tastypie.authorization import Authorization
+from tastypie.authentication import BasicAuthentication
+from django.contrib.auth.models import User
 
-class ProductResource(ModelResource):
+class UserResource(ModelResource):
     class Meta:
-        queryset = Product.objects.all()
-        resource_name = 'product'
-        fields = ['name','price']
+        queryset = User.objects.all()
+        resource_name = 'user'
+        fields = ['email','is_active']
+        authentication = BasicAuthentication()
+        authorization = Authorization()
