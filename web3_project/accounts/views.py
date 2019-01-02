@@ -42,7 +42,7 @@ class RegistrationView(BaseRegistrationView):
        
 
     def create_inactive_user(self,form):
-        new_user = form.save(commit=False)
+        new_user = form.save(commit=True)
         new_user.is_active = False
         new_user.save()
 
@@ -82,6 +82,8 @@ class RegistrationView(BaseRegistrationView):
             request=self.request
         )
         user.email_user(subject,message + activation_key, settings.DEFAULT_FROM_EMAIL)
+
+        
 
 class ActivationView(BaseActivationView):
     ALREADY_ACTIVATED_MESSAGE = _(

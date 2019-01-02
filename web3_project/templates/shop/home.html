@@ -2,16 +2,16 @@
 {% load static %}
 
 {% block top_background_wrapper %}
-<div class="bgded overlay" style="background-image:url({% static '/images/demo/backgrounds/01.png' %});">
+<div class="bgded overlay" style="background-image:url({% static '/images/demo/companylogo.png' %});">
 {% endblock %}
 
 
 {% block content %}
     <div id="pageintro" class="hoc clear">
         <article>
-            <h2 class="heading">Quisque aliquam erat efficitur laoreet</h2>
-            <p>Nam sed vehicula  aenean dictum nec erat vel finibus.</p>
-            <footer><a class="btn" href="#">Neque elit interdum</a></footer>
+            <h2 class="heading">FriendlyPC</h2>
+            <p>The best PC parts</p>
+            <footer><a class="btn" href="{% url 'shop:product_list' %}">SHOP NOW</a></footer>
         </article>
 
     </div>
@@ -21,13 +21,11 @@
     <main class="hoc container clear">
         
         <article class="group btmspace-80">
-        <div class="one_half first"><img class="inspace-10 borderedbox" src="{% static 'images/demo/480x400.png' %}" alt=""></div>
+        <div class="one_half first"><img class="inspace-10 borderedbox" src="{% static 'images/demo/article.jpg' %}" alt=""></div>
         <div class="one_half">
-            <p class="nospace font-xs">Suscipit viverra luctus sit</p>
-            <h3 class="heading">Amet diam nunc venenatis lacus</h3>
-            <p>Accumsan vestibulum nulla imperdiet dolor ut tempus ultricies nam sed posuere mi id molestie tortor quisque suscipit convallis ex in interdum tortor vestibulum ac phasellus.</p>
-            <blockquote>Viverra id felis a lacinia sed metus orci gravida non neque ut elementum facilisis est cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus quisque mollis nulla in quam</blockquote>
-            <p>Porttitor lacinia pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <p class="nospace font-xs">How to build a PC</p>
+            <h3 class="heading">Build your own pc is the best way to earn geek cred -- here's how to do it</h3>
+            <p>Building a computer used to be a complicated process where careful selection of delicate parts was a necessity. When that collection of components finally booted for the first time, it was a triumphant experience. Knowing how to build a computer made you quite the tech-head.</p>
             <footer><a href="#">Read More &raquo;</a></footer>
         </div>
         </article>
@@ -35,15 +33,14 @@
         <hr class="btmspace-80">
         
         <div class="center btmspace-80">
-        <h3 class="heading">Curabitur ac metus consequat</h3>
-        <p class="nospace">Rhoncus donec faucibus sit amet est ac porttitor integer aliquet dolor eros ac pretium odio.</p>
+        <h3 class="heading">Our services</h3>
+        <p class="nospace">We provide the best PC parts, and provide 24/7 support to help you with any questions you may have</p>
         </div>
         <ul class="nospace group cta">
         <li class="one_third first">
             <article><a href="#"><i class="fa fa-gamepad"></i></a>
-            <h6 class="heading">Nam at magna est</h6>
-            <p>Sed sodales mauris et egestas auctor neque ligula rhoncus enim id bibendum arcu massa phasellus&hellip;</p>
-            <footer><a href="#">Read More &raquo;</a></footer>
+            <h6 class="heading">Best gaming rigs</h6>
+            <p>We supply the best parts for any games that you may be interested in<p>
             </article>
         </li>
         <li class="one_third">
