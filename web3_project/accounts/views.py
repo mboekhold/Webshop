@@ -165,10 +165,6 @@ class LogoutView(generic.RedirectView):
         return super().get(request, *args, **kwargs)
 
 
-# class SignUp(generic.CreateView):
-#     form_class = forms.UserCreateForm
-#     success_url = reverse_lazy("login")
-#     template_name = "accounts/signup.html"
 
 
 # def changeProfile(request):
