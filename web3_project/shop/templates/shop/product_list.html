@@ -1,0 +1,107 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% load watermark %}
+
+{% block top_background_wrapper %}
+    <div class="bgded overlay" style="background-image:url({% static '/images/demo/backgrounds/01.png' %});">
+{% endblock %}
+
+{% block content %}
+
+    <div class="wrapper row2">
+        <div id="breadcrumb" class="hoc clear">
+
+            <ul>
+                <li><a href="{% url 'shop:home' %}">Home</a></li>
+                <li><a href="{% url 'shop:product_list' %}">Products</a></li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="wrapper row3">
+        <main class="hoc container clear">
+            <div id="category-sidebar" style="min-height: 600px">
+                <h3>Categories</h3>
+                <ul>
+                    <li {% if not category %}class="selected"{% endif %}>
+                        <a href="{% url "shop:product_list" %}">All</a>
+                    </li>
+                    {% for c in categories %}
+                        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                            <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="content">
+
+                <div id="gallery">
+                    <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+
+                    <figure>
+                        <div>
+                            <ul>
+                                {% for product in products %}
+                                    <li class="one_quarter"><a href="{{ product.get_absolute_url }}">
+                                        <img style="width: 220px;height: 150px;" src="
+                                            {% if product.image %}
+                                            {{ product.image.url|watermark:'main,position=120%x140%,opacity=75' }}
+                                            {% else %}{% static "img/no_image.png" %}{% endif %}">
+                                    </a>
+                                        <a href="{{ product.get_absolute_url }}">{{ product.name }}</a><br>
+                                        ${{ product.price }}
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </figure>
+
+                </div>
+
+                {#                <nav class="pagination">#}
+                {#                    <ul>#}
+                {#                        <li><a href="#">&laquo; Previous</a></li>#}
+                {#                        <li class="current"><strong>1</strong></li>#}
+                {#                        <li><a href="#">2</a></li>#}
+                {#                        <li><a href="#">Next &raquo;</a></li>#}
+                {#                    </ul>#}
+                {#                </nav>#}
+                {% if is_paginated %}
+                    <nav class="pagination">
+                        <ul>
+                            {% if page_obj.has_previous %}
+                                <li><a class="mb-4" href="?page=1">First</a></li>
+                                <li><a class="mb-4"
+                                       href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <li class="current"><a class="mb-4" href="?page={{ num }}">{{ num }}</a></li>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <li><a class="mb-4" href="?page={{ num }}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <li><a class="mb-4"
+                                       href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                                <li><a class="mb-4"
+                                       href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+
+            </div>
+
+            <!-- / main body -->
+            <div class="clear"></div>
+        </main>
+    </div>
+{% endblock %}
