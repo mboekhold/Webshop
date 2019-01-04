@@ -1,24 +1,28 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from cart.forms import CartAddProductForm
-from django.contrib.auth.decorators import login_required
-# from accounts.models import Profile
-from django.contrib.auth import get_user_model
+from django.views.generic import ListView
 
 
 # Create your views here.
 
+class ProductListView(ListView):
+    model = Product
+    context_object_name = 'products'
+    paginate_by = 6
 
-def product_list(request, category_slug=None):
-    category = None
-    categories = Category.objects.all()
-    products = Product.objects.filter(available=True)
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
-    return render(request, 'shop/products.html', {'category': category,
-                                                  'categories': categories,
-                                                  'products': products})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        context['category'] = None
+        return context
+
+    def get_queryset(self):
+        if self.kwargs.get('category_slug'):
+            category_slug = self.kwargs.get('category_slug')
+            category = get_object_or_404(Category, slug=category_slug)
+            return Product.objects.filter(category=category, available=True)
+        return Product.objects.filter(available=True)
 
 
 def product_detail(request, id, slug):
@@ -28,8 +32,7 @@ def product_detail(request, id, slug):
     else:
         cart_product_form = CartAddProductForm()
 
-    return render(request, 'shop/detail.html',
-                  {'product': product, 'cart_product_form': cart_product_form})
+    return render(request, 'shop/detail.html', {'product': product, 'cart_product_form': cart_product_form})
 
 
 def home(request):
@@ -38,8 +41,3 @@ def home(request):
 
 def cart(request):
     return render(request, 'shop/cart.html')
-
-@login_required
-def profile(request):
-    user = request.user
-    return render(request, 'shop/profile.html', {'profile': user.profile})

@@ -1,6 +1,6 @@
 {% extends "shop/base.html" %}
 {% load static %}
-
+{% load watermark %}
 {% load crispy_forms_tags %}
 
 {% block style_page %}
@@ -11,23 +11,36 @@
 
 {% block content %}
 
-      <div class="wrapper row3">
+    <div class="wrapper row3">
         <main class="hoc container clear">
             <article class="group btmspace-80">
                 <div class="one_half first">
                     <img class="inspace-10 borderedbox" src="
-                    {% if profile.image %}{{ profile.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"
+                    {% if profile.image %}
+                    {{ profile.image.url }}
+                    {% else %}{% static "img/no_image.png" %}
+                    {% endif %}"
+                         style="border-radius: 60%;
+                         border-color: darkred;
+                         padding: 0px;
+                         border-width: 5px;
+                         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%,
+                             rgba(0, 0, 0, 1) 100%),
+                              linear-gradient(to bottom,
+                               rgba(0, 0, 0, 1) 0%,
+                                rgba(0, 0, 0, 1) 100%);"
                          alt="">
                 </div>
                 <div class="one_half">
                     <p class="nospace font-xs"><b>Username:</b>
-                    {{ profile.user.username }}
+                        {{ profile.user.username }}
 
                         <a href="{{ product.category.get_absolute_url }}">
                             {{ product.category }}
                         </a>
                     </p>
-                    <h3 class="heading"><b>First Name:</b>{{ profile.first_name }}<br/><b>Last Name:</b> {{ profile.last_name }}</h3>
+                    <h3 class="heading"><b>First Name:</b>{{ profile.first_name }}<br/><b>Last
+                        Name:</b> {{ profile.last_name }}</h3>
                     <p>{{ profile.description }}</p>
                     <blockquote>{{ profile.quote }}
                     </blockquote>
@@ -37,7 +50,7 @@
             </article>
             <hr class="btmspace-80">
             <form action="#" method="post">
-                {{ cart_product_form | crispy}}
+                {{ cart_product_form | crispy }}
                 {% csrf_token %}
                 <input type="submit" value="Add to cart">
             </form>

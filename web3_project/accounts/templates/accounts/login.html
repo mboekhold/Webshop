@@ -1,28 +1,28 @@
 {% extends "shop/base.html" %}
 {% load bootstrap3 %}
 {% load crispy_forms_tags %}
-{% block title_tag %}Login | {{block.super}}  {% endblock %}
+{% block title_tag %}Login | {{ block.super }}  {% endblock %}
 
-{% block content%}
-<div class="container">
+{% block content %}
+    <div class="wrapper row3">
+        <main class="hoc container clear">
+            <h1>Login</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4"> Create an Account</legend>
+                    {{ form| crispy }}
+                </fieldset>
+                <input type="submit" value="Login" class="btn btn-default">
 
-    <h1>Login</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4"> Create an Account</legend>
-            {{ form| crispy}}
-        </fieldset>
-    <input type="submit" value="Login" class="btn btn-default">
 
-
-    </form>
-<div class="border-top pt-3 mt-5">
-    <small class="text-muted">
-        No Account Yet? <a href="{% url 'signup' %}" class="ml-2"> Sign up! </a>
-    </small>
-</div>
-
-</div>
+            </form>
+            <div class="border-top pt-3 mt-5">
+                <small class="text-muted">
+                    No Account Yet? <a href="{% url 'registration_register' %}" class="ml-2"> Sign up! </a>
+                </small>
+            </div>
+        </main>
+    </div>
 
 {% endblock %}

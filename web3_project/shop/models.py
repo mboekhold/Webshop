@@ -49,7 +49,6 @@ class Product(models.Model):
         class Meta:
             ordering = ('-created')
             index_together = (('id', 'slug'),)
-        
 
     def save(self):
         # Opening the uploaded image
@@ -58,14 +57,28 @@ class Product(models.Model):
         output = BytesIO()
 
         # Resize/modify the image
-        im = im.resize((450, 265))
-
+        im = im.resize((450, 400))
+        image = im
         # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=100)
+        im.save(output, format='PNG', quality=100)
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
-        self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
-                                        sys.getsizeof(output), None)
+        self.image = InMemoryUploadedFile(output, 'ImageField',
+                                          "%s.png" % self.image.name.split('.')[0],
+                                          'image/png',
+                                          sys.getsizeof(output), None)
+
+        # pixelating image
+        output = BytesIO()
+        pixelSize = 4
+        image = image.resize((int(450 / pixelSize), int(400 / pixelSize)), Image.NEAREST)
+        image = image.resize((image.size[0] * pixelSize, image.size[1] * pixelSize), Image.NEAREST)
+        image.save(output, format='PNG', quality=100)
+        output.seek(0)
+        self.image_pxl = InMemoryUploadedFile(output, 'ImageField',
+                                              "%s.png" % self.image_pxl.name.split('.')[0],
+                                              'image/png',
+                                              sys.getsizeof(output), None)
 
         super(Product, self).save()

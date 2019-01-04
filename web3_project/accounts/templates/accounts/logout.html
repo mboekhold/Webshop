@@ -1,19 +1,19 @@
 {% extends "shop/base.html" %}
 {% load bootstrap3 %}
 {% load crispy_forms_tags %}
-{% block title_tag %}Log Out | {{block.super}}  {% endblock %}
+{% block title_tag %}Log Out | {{ block.super }}  {% endblock %}
 
-{% block content%}
-<div class="container">
+{% block content %}
+    <div class="wrapper row3">
+        <main class="hoc container clear">
+            <h2>You have been Logged Out</h2>
 
-<h2>You have been Logged Out</h2>
-
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Log In Again? <a href="{% url 'login' %}" class="ml-2"> Login </a>
-    </small>
-</div>
-
-</div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Log In Again? <a href="{% url 'login' %}" class="ml-2"> Login </a>
+                </small>
+            </div>
+        </main>
+    </div>
 
 {% endblock %}

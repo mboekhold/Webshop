@@ -4,9 +4,7 @@
 {% block top_background_wrapper %}
 <div class="bgded overlay" style="background-image:url({% static '/images/demo/companylogo.png' %});">
 {% endblock %}
-
-
-{% block content %}
+{% block wrapper_row1 %}
     <div id="pageintro" class="hoc clear">
         <article>
             <h2 class="heading">FriendlyPC</h2>
@@ -15,8 +13,9 @@
         </article>
 
     </div>
-    </div>
+{% endblock wrapper_row1 %}
 
+{% block content %}
     <div class="wrapper row3">
     <main class="hoc container clear">
         
