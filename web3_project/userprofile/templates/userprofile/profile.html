@@ -45,6 +45,7 @@
                     <blockquote>{{ profile.quote }}
                     </blockquote>
                     <p>{{ profile.user.email }}</p>
+                    <p><a href="{% url 'mydata' %}">Download my data (pdf)<p>
                     <footer><a href="{% url 'change_profile' %}">Edit &raquo;</a></footer>
                 </div>
             </article>

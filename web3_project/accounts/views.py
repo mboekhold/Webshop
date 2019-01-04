@@ -1,4 +1,5 @@
 from django.contrib.auth import login, logout, get_user_model
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse_lazy
@@ -14,12 +15,20 @@ from django_registration import signals
 from django_registration.exceptions import ActivationError
 from django_registration.views import ActivationView as BaseActivationView
 from django_registration.views import RegistrationView as BaseRegistrationView
-from . import forms
-import sys
+from django.http import FileResponse, HttpResponse
 
+from reportlab.pdfgen import canvas
+
+from . import forms
+
+import sys
 import logging
+import io
+import datetime
 
 logger = logging.getLogger(__name__)
+
+
 
 REGISTRATION_SALT = getattr(settings,'REGISTRATION_SALT', 'registration')
 
@@ -167,22 +176,32 @@ class LogoutView(generic.RedirectView):
 
 
 
-# def changeProfile(request):
-#     from PIL import Image
-#     import io
-#     user = request.user
-#     if request.method == 'POST':
 
-#         user_form = forms.UserChangeForm(request.POST, instance=user)
-#         profile_form = forms.ProfileChangeForm(request.POST, request.FILES, instance=user.profile)
+def generate_pdf(request):
+    current_user = request.user
 
-#         if all((profile_form.is_valid(), user_form.is_valid())):
-#             user_form.save()
-#             profile_form.save()
-#             username = user.username
-#             messages.success(request, f'Profile was changed for {username}!')
-#             return redirect('shop:profile')
-#     else:
-#         user_form = forms.UserChangeForm(instance=user)
-#         profile_form = forms.ProfileChangeForm(instance=user.profile)
-#     return render(request, 'accounts/change.html', {'profile_form': profile_form, 'user_form': user_form})
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment;filename="somefilename.pdf"'
+
+    # Create the PDF object, using the response object as its "file."
+    p = canvas.Canvas(response)
+
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+
+
+    p.drawString(10, 820,'username: {}'.format(current_user.username))
+    p.drawString(10, 810,'email: {}'.format(current_user.email))
+    p.drawString(10, 800,'last logged in: {}'.format(current_user.last_login.strftime('%m-%d-%y')))
+    p.drawString(10, 790, 'Sign up date: {}'.format(current_user.date_joined.strftime('%m-%d-%y')))
+
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+    return response 
+
+
+    
+
+                
