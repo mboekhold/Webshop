@@ -6,7 +6,7 @@
 {% block style_page %}
 {% endblock style_page %}
 {% block top_background_wrapper %}
-    <div class="bgded overlay" style="background-image:url({% static '/images/demo/backgrounds/01.png' %});">
+    <div class="bgded overlay" style="background-image:url({% static '/images/demo/companylogo.png' %});">
 {% endblock %}
 
 {% block content %}
@@ -49,11 +49,7 @@
                 </div>
             </article>
             <hr class="btmspace-80">
-            <form action="#" method="post">
-                {{ cart_product_form | crispy }}
-                {% csrf_token %}
-                <input type="submit" value="Add to cart">
-            </form>
+            
         </main>
     </div>
 
